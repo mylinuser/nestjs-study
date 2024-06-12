@@ -35,7 +35,7 @@ export class PostsService {
     qb.orderBy('post.create_time', 'DESC');
 
     const count = await qb.getCount();
-    const { pageNum = 1, pageSize = 10, ...params } = query;
+    const { pageNum = 1, pageSize = 10 } = query;
     qb.limit(pageSize);
     qb.offset(pageSize * (pageNum - 1));
 
