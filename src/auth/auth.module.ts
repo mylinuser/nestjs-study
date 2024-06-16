@@ -9,6 +9,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigService, ConfigModule } from '@nestjs/config';
 import { JwtStorage } from './jwt.strategy';
 import { UserModule } from 'src/user/user.module';
+import { HttpModule } from '@nestjs/axios';
 
 const jwtModule = JwtModule.registerAsync({
   inject: [ConfigService],
@@ -24,6 +25,7 @@ const jwtModule = JwtModule.registerAsync({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }), // 确保 ConfigModule 全局可用.,
     TypeOrmModule.forFeature([User]),
+    HttpModule,
     PassportModule,
     jwtModule,
     UserModule,
